@@ -1,0 +1,7 @@
+flask
+requests
+python-jose[cryptography]
+pymupdf
+python-dotenv
+
+

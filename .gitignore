@@ -29,4 +29,7 @@ env/
 # Vercel
 .vercel/
 
+# Local dump (local-only image storage)
+local-dump/
+
 

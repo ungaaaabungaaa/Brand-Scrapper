@@ -23,6 +23,16 @@ pip install -r requirements.txt
 
 ```
 
+### 1b. Local-only deps (no Vercel Blob)
+
+If you only want to run the local testing server (`api/index_local.py`), install:
+
+Bash
+
+```
+pip install -r requirements-local.txt
+```
+
 ### 2. Environment Variables
 
 Create a `.env` file or export these in your terminal:
@@ -39,6 +49,30 @@ export CRON_SECRET="your_cleanup_job_password"
 
 
 ## 🧪 Testing the Extraction API
+
+### Local-only mode (no Vercel Blob)
+
+If you want to test locally without Vercel Blob, use `api/index_local.py`. It writes extracted images to `brand-extractor/local-dump/` and serves them at `/local-dump/...`.
+
+Bash
+
+```
+cd brand-extractor
+source .venv/bin/activate
+
+# Optional: if JWT_SECRET is unset, auth is skipped in local mode
+export OPENROUTER_API_KEY="your_openrouter_key"
+
+python3 api/index_local.py
+```
+
+Then call:
+
+Bash
+
+```
+curl -X GET "http://127.0.0.1:5000/api/extract-brand?pdf_url=https://your-pdf-link.pdf"
+```
 
 ### Option A: Using cURL`enter code here`
 
