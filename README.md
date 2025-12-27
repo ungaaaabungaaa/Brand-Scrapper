@@ -1,5 +1,7 @@
 # 🏷️ Brand Extractor API
 
+![thumbnail](preview.png)
+
 A robust Vercel Cloud Function (Python) that parses PDFs, extracts images, tags them semantically, and uses **Gemini 1.5 Pro** to categorize brand assets without memory exhaustion.
 
 ----------
