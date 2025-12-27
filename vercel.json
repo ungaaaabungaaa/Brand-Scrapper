@@ -1,0 +1,14 @@
+{
+  "crons": [
+    {
+      "path": "/api/cleanup",
+      "schedule": "0 * * * *"
+    }
+  ],
+  "rewrites": [
+    { "source": "/api/extract-brand", "destination": "/api/index.py" },
+    { "source": "/api/cleanup", "destination": "/api/cleanup.py" }
+  ]
+}
+
+
