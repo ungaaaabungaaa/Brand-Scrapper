@@ -10,8 +10,6 @@ A robust Vercel Cloud Function (Python) that parses PDFs, extracts images, tags 
 
 ### 1. Local Setup
 
-Bash
-
 ```
 # Clone and enter directory
 cd brand-extractor
@@ -29,7 +27,7 @@ pip install -r requirements.txt
 
 Create a `.env` file or export these in your terminal:
 
-Bash
+
 
 ```
 export JWT_SECRET="your_shared_backend_secret"
@@ -46,7 +44,7 @@ export CRON_SECRET="your_cleanup_job_password"
 
 Since the API uses HS256 JWT, you first need a test token. Use this one-liner to generate a token valid for 1 hour (requires `python-jose` installed):
 
-Bash
+
 
 ```
 # Generate Token
@@ -60,25 +58,17 @@ curl -X GET "http://127.0.0.1:5000/api/extract-brand?pdf_url=https://your-pdf-li
 
 ### Option B: Using Postman
 
-1.  **Method**: `GET`
-    
-2.  **URL**: `{{BASE_URL}}/api/extract-brand`
-    
+1.  **Method**: `GET`    
+2.  **URL**: `{{BASE_URL}}/api/extract-brand`    
 3.  **Params**:
-    
-    -   Key: `pdf_url`, Value: `https://link-to-your-brand-guide.pdf`
-        
+    -   Key: `pdf_url`, Value: `https://link-to-your-brand-guide.pdf`   
 4.  **Authorization**:
-    
     -   **Type**: `Bearer Token`
-        
     -   **Token**: (Paste the token generated from the script above)
         
 5.  **Headers**:
-    
     -   `Content-Type`: `application/json`
         
-
 ----------
 
 ## 🧹 Testing the Cleanup Job
@@ -86,8 +76,6 @@ curl -X GET "http://127.0.0.1:5000/api/extract-brand?pdf_url=https://your-pdf-li
 The cleanup job deletes images older than 24 hours. You can trigger it manually to ensure the `CRON_SECRET` logic is working.
 
 ### Using cURL
-
-Bash
 
 ```
 curl -i -X GET "http://127.0.0.1:5000/api/cleanup" \
@@ -123,12 +111,8 @@ Required: `pymupdf`, `vercel-blob`, `python-jose`, `requests`, `flask`.
 
 ## 📡 Deployment
 
-1.  **Push** this code to a GitHub Repository.
-    
+1.  **Push** this code to a GitHub Repository or Fork it.
 2.  **Import** to Vercel.
-    
 3.  **Connect Storage**: Go to the **Storage** tab in Vercel and create/connect a **Blob** store.
-    
 4.  **Add Envs**: Add `JWT_SECRET`, `OPENROUTER_API_KEY`, and `CRON_SECRET` in Vercel Settings.
-    
 5.  **Deploy**: Vercel will automatically detect the `crons` in `vercel.json`.
